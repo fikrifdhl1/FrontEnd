@@ -1,0 +1,21 @@
+﻿@model BackendService.Models.DTO.CreateTransactionDTO
+
+@{
+    ViewData["Title"] = "Create Transaction";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="UserId"></label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CartId"></label>
+        <input asp-for="CartId" class="form-control" />
+        <span asp-validation-for="CartId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

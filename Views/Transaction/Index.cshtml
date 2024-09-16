@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BackendService.Models.DTO.TransactionDTO>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>UserId</th>
+            <th>CartId</th>
+            <th>TotalPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+                <tr>
+                    <td>@transaction.Id</td>
+                    <td>@transaction.UserId</td>
+                    <td>@transaction.CartId</td>
+                    <td>@transaction.TotalPrice</td>
+                </tr>
+        }
+    </tbody>
+</table>

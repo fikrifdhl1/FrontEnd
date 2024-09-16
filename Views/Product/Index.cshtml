@@ -1,0 +1,41 @@
+﻿@using BackendService.Models.DTO;
+@model List<ProductDTO>
+
+<h2>Products</h2>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<a href="@Url.Action("Create", "Product")">Create New</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.Stock</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Product", new { id = product.Id })">Edit</a> |
+                    <a href="@Url.Action("Details", "Product", new { id = product.Id })">Details</a> |
+                    <a href="@Url.Action("Delete", "Product", new { id = product.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

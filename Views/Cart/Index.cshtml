@@ -1,0 +1,54 @@
+﻿@model List<BackendService.Models.DTO.CartDTO>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>UserId</th>
+            <th>TotalAmount</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <td>@cart.Id</td>
+                <td>@cart.UserId</td>
+                <td>@cart.TotalAmount</td>
+                <td>@cart.Status</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = cart.Id })" class="btn btn-info">Details</a>
+                    @if (cart.Status == 1)
+                    {
+                        <form asp-action="Delete" asp-route-id="@cart.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        @if (cart.TotalAmount > 0)
+                        {
+                            <form asp-action="Checkout" asp-route-id="@cart.Id" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Checkout</button>
+                            </form>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New Cart</a>

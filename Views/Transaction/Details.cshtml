@@ -1,0 +1,14 @@
+﻿@model BackendService.Models.DTO.TransactionDTO
+
+@{
+    ViewData["Title"] = "Transaction Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>Transaction ID: @Model.Id</h3>
+    <p><strong>UserId:</strong> @Model.UserId</p>
+    <p><strong>CartId:</strong> @Model.CartId</p>
+    <p><strong>TotalPrice:</strong> @Model.TotalPrice</p>
+</div>
